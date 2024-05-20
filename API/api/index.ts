@@ -13,7 +13,8 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, '..', 'components', 'home.htm'));
+	//res.sendFile(path.join(__dirname, '..', 'components', 'home.htm'));
+	res.send("aaaa")
 });
 
 app.get('/about', function (req, res) {
