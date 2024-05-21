@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 app.get('/a', function (req, res) {
 	const users = await sql`SELECT * FROM productos;`;
 	if (users && users.rows.length > 0) {
-		res.send("esta es otra peticion")
+		res.send("hay resultados")
 	}
 	else{res.send("nope")}
 });
