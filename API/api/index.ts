@@ -16,11 +16,7 @@ app.get('/', function (req, res) {
 	res.send("aqui iria mi json :D")
 });
 app.get('/a', function (req, res) {
-	const users = await sql`SELECT * FROM productos;`;
-	if (users && users.rows.length > 0) {
-		res.send("hay resultados")
-	}
-	else{res.send("nope")}
+	res.send("a")
 });
 app.get('/about', function (req, res) {
 	res.sendFile(path.join(__dirname, '..', 'components', 'about.htm'));
