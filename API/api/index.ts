@@ -16,7 +16,11 @@ app.get('/', function (req, res) {
 	res.send("aqui iria mi json :D")
 });
 app.get('/a', function (req, res) {
-	res.send("esta es otra peticion")
+	const users = await sql`SELECT * FROM productos;`;
+	if (users && users.rows.length > 0) {
+		res.send("esta es otra peticion")
+	}
+	else{res.send("nope")}
 });
 app.get('/about', function (req, res) {
 	res.sendFile(path.join(__dirname, '..', 'components', 'about.htm'));
