@@ -1,3 +1,7 @@
+import { VercelRequest, VercelResponse } from '@vercel/node';
+import { sql } from '@vercel/postgres';
+
+
 require('dotenv').config();
 
 const express = require('express');
@@ -16,7 +20,9 @@ app.get('/', function (req, res) {
 	res.send("aqui iria mi json :D")
 });
 app.get('/a', function (req, res) {
-	res.send("esta es otra peticion")
+	const pets = await sql`SELECT * FROM productos WHERE precio < 2;`;
+	return response.status(200).json({ pets });
+	//res.send("esta es otra peticion")
 });
 app.get('/about', function (req, res) {
 	res.sendFile(path.join(__dirname, '..', 'components', 'about.htm'));
