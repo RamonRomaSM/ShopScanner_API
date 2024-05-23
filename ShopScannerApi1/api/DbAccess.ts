@@ -2,6 +2,8 @@
 
 //GetUsuario(String nombre, String passw)   El usuario es un dao como el de c# (para mantener la integridad de la app)
 
+//PostUsuario(String nombre, String passw) Crea usuario, retorna null si no pudo (email?)
+
 //UpdateLista(Lista l , int idUsuario)  Update de esa lista de ese usuario
 
 //PostLista(Lista l , int idUsuario)    inserta la lista a ese usuario
