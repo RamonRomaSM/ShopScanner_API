@@ -18,7 +18,7 @@ POSTGRES_HOST="ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech"
 POSTGRES_PASSWORD="LgdV3Hc7UFKI"
 POSTGRES_DATABASE="verceldb"
 */ 
-app.get("/", (req, res) => res.send( sql`SELECT * FROM productos WHERE precio < 10 LIMIT 5;`));
+app.get("/", (req, res) => res.send( sql`SELECT * FROM productos LIMIT 5;`));
 
 app.get("/resp1", (req, res) => res.send("resp1"));
 
