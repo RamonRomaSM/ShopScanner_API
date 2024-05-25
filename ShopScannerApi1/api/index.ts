@@ -23,7 +23,7 @@ POSTGRES_DATABASE="verceldb"
 
 const a=await sql`SELECT * FROM productos LIMIT 5;`;
 
-app.get("/", (req, res) => res.send(a.fields));
+app.get("/", (req, res) => res.send("A"));
 
 /*
 app.get("/", (req, res) => res.send());
