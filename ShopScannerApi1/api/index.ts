@@ -2,7 +2,7 @@ import {sql} from '@vercel/postgres';
 
 const express = require("express");
 const app = express();
-const client = sql.connect();
+
 //TODO: falta seguir el tutorial de posgres, en una carpeta a parte hacer una clase de acc a datos
 //      para el jueves llevar al menos un json de productos
 //
