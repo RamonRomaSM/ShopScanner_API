@@ -19,7 +19,10 @@ POSTGRES_PASSWORD="LgdV3Hc7UFKI"
 POSTGRES_DATABASE="verceldb"
 */ 
 
-
+export default function handler (req,res){
+    res.status(200).json({name:"jhon"});
+}
+/*
 const client = await db.connect();
 const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
 
@@ -29,3 +32,4 @@ app.get("/", (req, res) => res.send(res.json({a})));
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
 module.exports = app;
+*/
