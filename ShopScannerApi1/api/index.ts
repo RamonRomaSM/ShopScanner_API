@@ -1,4 +1,4 @@
-import { db } from "@vercel/postgres";
+import { sql } from '@vercel/postgres';
 const express = require("express");
 const app = express();
 //TODO: falta seguir el tutorial de posgres, en una carpeta a parte hacer una clase de acc a datos
@@ -18,10 +18,10 @@ POSTGRES_HOST="ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech"
 POSTGRES_PASSWORD="LgdV3Hc7UFKI"
 POSTGRES_DATABASE="verceldb"
 */ 
+const { rows, fields } =
+await sql`SELECT * FROM productos LIMIT 5;`;
 
-const datos = await db`SELECT * FROM productos LIMIT 5`;
-
-app.get("/", (req, res) => res.send(res.json({datos})));
+app.get("/", (req, res) => res.send(res.json({fields})));
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
