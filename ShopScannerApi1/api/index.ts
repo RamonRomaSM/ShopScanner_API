@@ -19,7 +19,7 @@ POSTGRES_PASSWORD="LgdV3Hc7UFKI"
 POSTGRES_DATABASE="verceldb"
 */ 
 db.connect();
-const datos = await db`SELECT * FROM tfgapi-postgres.productos LIMIT 5`;
+const datos = await db`SELECT * FROM productos LIMIT 5`;
 
 app.get("/", (req, res) => res.send(res.json({datos})));
 
