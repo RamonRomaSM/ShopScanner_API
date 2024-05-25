@@ -1,4 +1,4 @@
-import { sql } from '@vercel/postgres';
+import {sql} from '@vercel/postgres';
 
 const express = require("express");
 const app = express();
@@ -20,8 +20,13 @@ POSTGRES_HOST="ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech"
 POSTGRES_PASSWORD="LgdV3Hc7UFKI"
 POSTGRES_DATABASE="verceldb"
 */ 
-var a=await sql`SELECT * FROM productos LIMIT 5;`;
-app.get("/", (req, res) => res.send( a));
+
+const a=await sql`SELECT * FROM productos LIMIT 5;`;
+
+app.get("/", (req, res) => res.send(a.fields));
+
+/*
+app.get("/", (req, res) => res.send());
 
 app.get("/resp1", (req, res) => res.send("resp1"));
 
@@ -29,3 +34,4 @@ app.get("/resp2", (req, res) => res.send("resp1"));
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
 module.exports = app;
+*/
