@@ -1,3 +1,4 @@
+import { db } from "@vercel/postgres";
 const express = require("express");
 const app = express();
 //TODO: falta seguir el tutorial de posgres, en una carpeta a parte hacer una clase de acc a datos
@@ -17,9 +18,11 @@ POSTGRES_HOST="ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech"
 POSTGRES_PASSWORD="LgdV3Hc7UFKI"
 POSTGRES_DATABASE="verceldb"
 */ 
-app.get("/", (req, res) => res.send("Express on Vercel"));
-app.get("/resp1", (req, res) => res.send("resp1"));
-app.get("/resp2", (req, res) => res.send("resp1"));
+const client = db.connect();
+const datos = await db`SELECT * FROM tfgapi-postgres.productos LIMIT 5`
+
+app.get("/", (req, res) => res.send(res.json({datos})));
+
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
 module.exports = app;

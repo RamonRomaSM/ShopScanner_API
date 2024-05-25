@@ -1,4 +1,4 @@
-import { sql } from "@vercel/postgres";
+import { db } from "@vercel/postgres";
 //GetPagina(int n, String match , 30)   30 es el tamaño de la pagina
 
 //GetUsuario(String nombre, String passw)   El usuario es un dao como el de c# (para mantener la integridad de la app)
