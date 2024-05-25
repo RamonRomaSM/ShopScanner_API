@@ -2,6 +2,7 @@ import { sql } from '@vercel/postgres';
 
 const express = require("express");
 const app = express();
+const client = sql.connect();
 //TODO: falta seguir el tutorial de posgres, en una carpeta a parte hacer una clase de acc a datos
 //      para el jueves llevar al menos un json de productos
 //
@@ -19,7 +20,8 @@ POSTGRES_HOST="ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech"
 POSTGRES_PASSWORD="LgdV3Hc7UFKI"
 POSTGRES_DATABASE="verceldb"
 */ 
-app.get("/", (req, res) => res.send( sql`SELECT * FROM productos LIMIT 5;`));
+var a=await sql`SELECT * FROM productos LIMIT 5;`;
+app.get("/", (req, res) => res.send( a));
 
 app.get("/resp1", (req, res) => res.send("resp1"));
 
