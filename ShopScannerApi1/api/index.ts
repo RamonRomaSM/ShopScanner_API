@@ -21,7 +21,7 @@ POSTGRES_PASSWORD="LgdV3Hc7UFKI"
 POSTGRES_DATABASE="verceldb"
 */ 
 
-const a=await sql`SELECT * FROM productos LIMIT 5;`;
+//const a=await sql`SELECT * FROM productos LIMIT 5;`;
 
 app.get("/", (req, res) => res.send("A"));
 
