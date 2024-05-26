@@ -9,36 +9,10 @@ const app = express();
 //
 
 /*
-POSTGRES_URL="postgres://default:LgdV3Hc7UFKI@ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech:5432/verceldb?sslmode=require"
-POSTGRES_PRISMA_URL="postgres://default:LgdV3Hc7UFKI@ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
-POSTGRES_URL_NO_SSL="postgres://default:LgdV3Hc7UFKI@ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech:5432/verceldb"
-POSTGRES_URL_NON_POOLING="postgres://default:LgdV3Hc7UFKI@ep-quiet-feather-a2l8vl1h.eu-central-1.aws.neon.tech:5432/verceldb?sslmode=require"
-POSTGRES_USER="default"
-POSTGRES_HOST="ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech"
-POSTGRES_PASSWORD="LgdV3Hc7UFKI"
-POSTGRES_DATABASE="verceldb"
+/aa?cosa
+esto se iria a la  de /aa
+
 */ 
-/*
-export default async function handler (req,res){
-    const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
-    console.log(req);
-    res.status(200).json({a});
-}
-*/
-/*
-const client = await db.connect();
-const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
-
-
-app.get("/", (req, res) => res.send(res.json({a})));
-
-app.listen(3000, () => console.log("Server ready on port 3000."));
-
-module.exports = app;
-*/
-
-
 
 app.get("/", async function(req, res) {
     const client = await db.connect();
@@ -48,7 +22,9 @@ app.get("/", async function(req, res) {
 app.get("/aa", async function(req, res) {
     const client = await db.connect();
     const a = await client.sql`SELECT * FROM productos LIMIT 1;`;
-    res.status(200).json({a});
+    res.status(200).json({
+        req:"a"
+    });
 });
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
