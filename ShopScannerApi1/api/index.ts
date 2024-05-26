@@ -45,6 +45,11 @@ app.get("/", async function(req, res) {
     const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
     res.status(200).json({a});
 });
+app.get("/aa", async function(req, res) {
+    const client = await db.connect();
+    const a = await client.sql`SELECT * FROM productos LIMIT 1;`;
+    res.status(200).json({a});
+});
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
