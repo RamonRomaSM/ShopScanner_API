@@ -23,7 +23,7 @@ app.get("/aa", async function(req, res) {
     const client = await db.connect();
     const a = await client.sql`SELECT * FROM productos LIMIT 1;`;
     res.status(200).json({
-        req : req as string
+        req : (req as Request).body
     });
 });
 
