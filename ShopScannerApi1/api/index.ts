@@ -21,9 +21,8 @@ Tengo que meter una columna en la bdd que sea el numero de elemento, asi puedo p
 */ 
 
 app.get("/", async function(req, res) {
-    const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
-    res.status(200).json({a});
+  
+    res.send("a");
 });
 
 app.get("/getPagina", async function( req,res ) {
