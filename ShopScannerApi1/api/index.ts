@@ -33,7 +33,7 @@ app.get("/aa", async function( req,res ) {
         let limit = req.query.limit;
     */
     const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos LIMIT ${page},2;`;
+    const a = await client.sql`SELECT * FROM productos LIMIT ${page};`;
    
     res.status(200).json({a});
 });
