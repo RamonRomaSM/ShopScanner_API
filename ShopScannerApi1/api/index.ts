@@ -28,7 +28,7 @@ export default async function handler (req,res){
 */
 
 
-
+const client = await db.connect();
 
 app.get("/", (req, res) => res.send(
     cosa(req,res)
@@ -44,8 +44,8 @@ module.exports = app;
 
 
 async function cosa(req, res){
-    const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
+    
+    var a = await client.sql`SELECT * FROM productos LIMIT 5;`;
     console.log(req);
     return res.status(200).json({a});
 
