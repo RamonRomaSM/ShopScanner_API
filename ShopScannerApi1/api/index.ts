@@ -22,20 +22,29 @@ POSTGRES_DATABASE="verceldb"
 export default async function handler (req,res){
     const client = await db.connect();
     const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
-    
-    app.get("/", (req, res) => res.send.json({a}));
-    app.get("/aa", (req, res) => res.send("aa"));
+    console.log(req);
+    res.status(200).json({a});
 }
 */
-
-
-
+/*
 const client = await db.connect();
 const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
 
 
-app.get("/", (req, res) => res.send("aa"));
+app.get("/", (req, res) => res.send(res.json({a})));
 
+app.listen(3000, () => console.log("Server ready on port 3000."));
+
+module.exports = app;
+*/
+
+
+
+app.get("/", async function(req, res) {
+    const client = await db.connect();
+    const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
+    res.status(200).json({a});
+});
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
