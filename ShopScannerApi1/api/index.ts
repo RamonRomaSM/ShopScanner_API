@@ -17,6 +17,7 @@ const app = express();
 /aa?cosa
 esto se iria a la  de /aa
 
+Tengo que meter una columna en la bdd que sea el numero de elemento, asi puedo paginar a partir del numero que me pasen
 */ 
 
 app.get("/", async function(req, res) {
@@ -27,7 +28,7 @@ app.get("/", async function(req, res) {
 
 app.get("/aa", async function(  req: Express.TypedRequestQuery<{ page: Number}>,res: Express.Response) {
     const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos LIMIT ${req.page};`;
+    const a = await client.sql`SELECT * FROM productos LIMIT `+req.page+` ;`;
     res.status(200).json({a});
 });
 
