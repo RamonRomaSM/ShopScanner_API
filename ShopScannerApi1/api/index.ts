@@ -27,13 +27,13 @@ app.get("/", async function(req, res) {
 });
 
 app.get("/aa", async function( req,res ) {
-    let num = req.query.num;
+    let page = req.query.page;
     /*
         let page = req.query.page;
         let limit = req.query.limit;
     */
     const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos LIMIT ${num};`;
+    const a = await client.sql`SELECT * FROM productos LIMIT ${page};`;
    
     res.status(200).json({a});
 });
