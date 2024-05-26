@@ -27,7 +27,7 @@ app.get("/", async function(req, res) {
 app.get("/getPagina", async function( req,res ) {
     let num = req.query.num * 15;
     const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos WHERE num < ${num} LIMIT 15;`;
+    const a = await client.sql`SELECT * FROM productos WHERE num > ${num} LIMIT 15;`;
    
     res.status(200).json({a});
 });
