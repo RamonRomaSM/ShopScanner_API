@@ -14,10 +14,9 @@ const app = express();
 //
 
 /*
-/aa?cosa
-esto se iria a la  de /aa
-
-Tengo que meter una columna en la bdd que sea el numero de elemento, asi puedo paginar a partir del numero que me pasen
+pag 0  + (0)= 1 - 15
+pag 1 + (15) = 16-30
+pag 2 + (30) = 31 - 45
 */ 
 
 app.get("/", async function(req, res) {
@@ -26,9 +25,9 @@ app.get("/", async function(req, res) {
 });
 
 app.get("/getPagina", async function( req,res ) {
-    let num = req.query.num;
+    let num = req.query.num * 15;
     const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos WHERE num > ${num} LIMIT 2;`;
+    const a = await client.sql`SELECT * FROM productos WHERE num > ${num} LIMIT 15;`;
    
     res.status(200).json({a});
 });
