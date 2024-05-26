@@ -22,8 +22,8 @@ POSTGRES_DATABASE="verceldb"
 export default async function handler (req,res){
     const client = await db.connect();
     const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
-    res.send(req);
-    //res.status(200).json({a});
+    console.log(req);
+    res.status(200).json({a});
 }
 /*
 const client = await db.connect();
