@@ -25,12 +25,9 @@ app.get("/", async function(req, res) {
     res.status(200).json({a});
 });
 
-app.get("/aa", async function( req,res) {
-
-    let page = req.query.page;
-    
+app.get("/aa", async function(  req: Express.TypedRequestQuery<{ page: Number}>,res: Express.Response) {
     const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos LIMIT ${page},1;`;
+    const a = await client.sql`SELECT * FROM productos LIMIT `+req.page+`,1;`;
     res.status(200).json({a});
 });
 
