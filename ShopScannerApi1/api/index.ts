@@ -26,14 +26,10 @@ app.get("/", async function(req, res) {
     res.status(200).json({a});
 });
 
-app.get("/aa", async function( req,res ) {
-    let page = req.query.page;
-    /*
-        let page = req.query.page;
-        let limit = req.query.limit;
-    */
+app.get("/getPagina", async function( req,res ) {
+    let num = req.query.num;
     const client = await db.connect();
-    const a = await client.sql`SELECT * FROM productos WHERE num > ${page} LIMIT 2;`;
+    const a = await client.sql`SELECT * FROM productos WHERE num > ${num} LIMIT 2;`;
    
     res.status(200).json({a});
 });
