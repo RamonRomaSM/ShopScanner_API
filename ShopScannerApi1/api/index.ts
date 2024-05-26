@@ -25,7 +25,7 @@ app.get("/", async function(req, res) {
     res.status(200).json({a});
 });
 
-app.get("/aa", async function(  req: Express.TypedRequestQuery<{ pag: string}>,res: Express.Response) {
+app.get("/aa", async function(  req: Express.TypedRequestQuery<{ pag: number}>,res: Express.Response) {
 
     const client = await db.connect();
     const a = await client.sql`SELECT * FROM productos LIMIT ${req.pag},1;`;
