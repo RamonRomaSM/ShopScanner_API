@@ -34,7 +34,7 @@ const client = await db.connect();
 const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
 
 
-app.get("/", (req, res) => res.send.json({a}));
+app.get("/", (req, res) => res.send("aa"));
 
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
