@@ -18,39 +18,22 @@ POSTGRES_HOST="ep-quiet-feather-a2l8vl1h-pooler.eu-central-1.aws.neon.tech"
 POSTGRES_PASSWORD="LgdV3Hc7UFKI"
 POSTGRES_DATABASE="verceldb"
 */ 
-/*
+
 export default async function handler (req,res){
     const client = await db.connect();
     const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
     console.log(req);
     res.status(200).json({a});
 }
-*/
 
-
+/*
 const client = await db.connect();
+const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
 
-app.get("/", (req, res) => res.send(
-    cosa(req,res)
-));
 
-app.get("/aa", (req, res) => res.send(
-    cosa2(req,res)
-));
+app.get("/", (req, res) => res.send(res.json({a})));
+
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
 module.exports = app;
-
-
-
-async function cosa(req, res){
-    
-    var a = await client.sql`SELECT * FROM productos LIMIT 5;`;
-    console.log(req);
-    return res.status(200).json({a});
-
-}
-async function cosa2(req, res){
-    return "a";
-
-}
+*/
