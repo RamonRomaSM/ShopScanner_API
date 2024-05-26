@@ -23,7 +23,7 @@ export default async function handler (req,res){
     const client = await db.connect();
     const a = await client.sql`SELECT * FROM productos LIMIT 5;`;
     
-    app.get("/", (req, res) => res.send(a));
+    app.get("/", (req, res) => res.send.json({a}));
     app.get("/aa", (req, res) => res.send("aa"));
 }
 
