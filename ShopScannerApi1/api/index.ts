@@ -13,12 +13,6 @@ const app = express();
 //      el 5 el numero de filas que recoje a partir del dado
 //
 
-/*
-pag 0  + (0)= 1 - 15
-pag 1 + (15) = 16-30
-pag 2 + (30) = 31 - 45
-*/ 
-
 app.get("/", async function(req, res) {
   
     res.send("a");
