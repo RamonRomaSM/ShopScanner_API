@@ -3,15 +3,34 @@ import Express from 'express';
 import http from 'http';
 const express = require("express");
 const app = express();
-//TODO: falta seguir el tutorial de posgres, en una carpeta a parte hacer una clase de acc a datos
-//      para el jueves llevar al menos un json de productos
-//
-//      hacer un script que me lea el csv de la db y la convierta en un solo insert
-//      
-//      SELECT * FROM tfg.productos LIMIT 0,5
-//      el 0 se refiere a la fila por la que empieza 
-//      el 5 el numero de filas que recoje a partir del dado
-//
+/*
+ahora ver lo de los dato de la tabla 
+(que las 2 tablas tengan las mismas filas pero seleccionando
+diferentes columnas), hacer el getSeleccionadas(que coja los valores diferenciales esos) 
+meterlos en el where de alguna forma (no se si en el hasMap o como hacerlo)
+*/
+
+//      createUser(nombre,passw,Email?)(a las malas sobrecargo con otro que no pida mail)
+//      logIn(nombre,passw)
+//      cuando guardas un carrito haces el createLista 
+//      podria hacer toda la gestion de listas ofline y al cerrar/cerrarsesion/salir guardar el estado del usuario(con la excusa del consumo de peticiones?)
+
+
+/*
+    aparentemente se puede meter un json en el body de una peticion post
+    asi que meter ahi a lista que se quiere guardar
+
+    createLista (nombre, idUser, cadena de productos...)    
+        te la añado y te mando de vuelta tus listas 
+
+    updateLista (cadena de productos...)
+        me pasas la lista nueva y la sobreescribo
+        te mando de vuelta tus listas
+
+    deleteLista (nombre idUser)
+*/
+
+
 
 app.get("/", async function(req, res) {
   
