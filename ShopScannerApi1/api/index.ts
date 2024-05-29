@@ -47,14 +47,22 @@ app.get("/getPagina", async function( req,res ) {
 });
 
 app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
-    
-    res.send(req.params.nombre);
-    //comprobar si existe(pedirlo y ver si retorna vacio?) e insertarlo
-    //usar posgres
+
+    const client = await db.connect();
+    const a = await client.sql` DO $$
+    BEGIN
+        IF NOT EXISTS (
+            SELECT 1 FROM usuarios WHERE nombre = ${req.params.nombre}
+        ) THEN
+            INSERT INTO usuarios (nombre, passw, email)
+            VALUES ( ${req.params.nombre},  ${req.params.nombre});
+        END IF;
+    END $$;`;
+    res.status(200).json({a});
+
 });
 
 app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
-    
     const client = await db.connect();
     const a = await client.sql`SELECT * FROM usuarios WHERE nombre = ${req.params.nombre} AND passw = ${req.params.passw};`;
     res.status(200).json({a});
