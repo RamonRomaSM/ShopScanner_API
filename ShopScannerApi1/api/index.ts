@@ -46,7 +46,7 @@ app.get("/getPagina", async function( req,res ) {
     res.status(200).json({a});
 });
 
-app.get("/register/:nombre/aaa/:passw",async function (req,res) {
+app.get("/register/nombre/:nombre/aaa/:passw",async function (req,res) {
     res.send(req.params);
     //comprobar si existe(pedirlo y ver si retorna vacio?) e insertarlo
     //usar posgres
