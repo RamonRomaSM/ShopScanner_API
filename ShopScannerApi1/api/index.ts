@@ -56,8 +56,9 @@ app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
 app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     let nombre = req.query.nombre;
     let passw = req.query.passw;
-    //comprobar si esta bien(pedirlo y ver si retorna vacio?) e insertarlo
-    //usar posgres
+    const client = await db.connect();
+    const a = await client.sql`SELECT * FROM usuarios WHERE nombre =${nombre} AND passw=${passw};`;
+    res.status(200).json({a});
 });
 
 
