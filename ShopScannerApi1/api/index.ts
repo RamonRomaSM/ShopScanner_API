@@ -49,19 +49,7 @@ app.get("/getPagina", async function( req,res ) {
 app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
 
     const client = await db.connect();
-    const a = await client.sql`DO $$
-    BEGIN
-        IF NOT EXISTS (
-            SELECT 1 FROM usuarios WHERE nombre =  ${req.params.nombre}
-        ) THEN
-            INSERT INTO usuarios (nombre, passw)
-            VALUES (${req.params.nombre},${req.params.passw});
-            RAISE NOTICE 'Usuario insertado correctamente.';
-        ELSE
-            RAISE NOTICE 'El usuario ya existe.';
-        END IF;
-    END $$;
-    `;
+    const a = await client.sql`SELECT existe_usuario(${req.params.nombre});`;
     res.status(200).json({a});
 
 });
