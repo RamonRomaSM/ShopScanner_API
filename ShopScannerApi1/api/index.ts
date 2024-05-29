@@ -47,7 +47,7 @@ app.get("/getPagina", async function( req,res ) {
 });
 
 app.get("/register/nombre/:nombre/aaa/:passw",async function (req,res) {
-    res.send(req.params);
+    res.send(req.params.nombre);
     //comprobar si existe(pedirlo y ver si retorna vacio?) e insertarlo
     //usar posgres
 });
