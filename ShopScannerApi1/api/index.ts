@@ -46,17 +46,20 @@ app.get("/getPagina", async function( req,res ) {
     res.status(200).json({a});
 });
 
-app.get("/register",async function (req,res) {
-    let nombre = req.query.nombre;
-    let passw = req.query.passw;
+app.post("/register/:nombre/:passw",async function (req,res) {
+    res.send(req.params);
     //comprobar si existe(pedirlo y ver si retorna vacio?) e insertarlo
+    //usar posgres
 });
 
 app.get("/login",async function(req,res) {
     let nombre = req.query.nombre;
     let passw = req.query.passw;
-
+    //comprobar si esta bien(pedirlo y ver si retorna vacio?) e insertarlo
+    //usar posgres
 });
+
+
 
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
