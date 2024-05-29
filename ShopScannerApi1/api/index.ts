@@ -46,7 +46,7 @@ app.get("/getPagina", async function( req,res ) {
     res.status(200).json({a});
 });
 
-app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
+app.post("/register/nombre/:nombre/passw/:passw",async function (req,res) {
 
     const client = await db.connect();
     const a = await client.sql` DO $$
