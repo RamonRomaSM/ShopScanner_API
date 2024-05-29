@@ -56,8 +56,9 @@ app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
 
 app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     const client = await db.connect();
-    const a = await client.sql`SELECT * FROM usuarios WHERE nombre = ${req.params.nombre} AND passw = ${req.params.passw};`;
-    res.status(200).json({a});
+    const exists = await client.sql`SELECT * FROM usuarios WHERE nombre = ${req.params.nombre} AND passw = ${req.params.passw};`;
+    //exists tiene el boolean que me dice si ya existe, sacarlo del json y hacer un if, por ultimo un req.send(true o false o algo asi)
+    res.status(200).json({exists});
 });
 
 
