@@ -1,4 +1,5 @@
 import { db } from '@vercel/postgres';
+import { kv } from '@vercel/kv';
 import Express from 'express';
 import http from 'http';
 const express = require("express");
@@ -44,6 +45,19 @@ app.get("/getPagina", async function( req,res ) {
    
     res.status(200).json({a});
 });
+
+app.get("/register",async function (req,res) {
+    let nombre = req.query.nombre;
+    let passw = req.query.passw;
+    //comprobar si existe(pedirlo y ver si retorna vacio?) e insertarlo
+});
+
+app.get("/login",async function(req,res) {
+    let nombre = req.query.nombre;
+    let passw = req.query.passw;
+
+});
+
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
