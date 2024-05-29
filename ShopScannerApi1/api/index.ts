@@ -46,13 +46,14 @@ app.get("/getPagina", async function( req,res ) {
     res.status(200).json({a});
 });
 
-app.get("/register/nombre/:nombre/aaa/:passw",async function (req,res) {
+app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
+    
     res.send(req.params.nombre);
     //comprobar si existe(pedirlo y ver si retorna vacio?) e insertarlo
     //usar posgres
 });
 
-app.get("/login",async function(req,res) {
+app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     let nombre = req.query.nombre;
     let passw = req.query.passw;
     //comprobar si esta bien(pedirlo y ver si retorna vacio?) e insertarlo
