@@ -54,9 +54,8 @@ app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
 });
 
 app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
-    let nombre = req.query.nombre;
-    let passw = req.query.passw;
-    res.send(nombre+"  "+passw)
+   
+    res.send(req.params)
    
 });
 
