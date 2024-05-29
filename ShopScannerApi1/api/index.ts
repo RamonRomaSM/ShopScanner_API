@@ -57,7 +57,7 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     let nombre = req.query.nombre;
     let passw = req.query.passw;
     const client = await db.connect();
-    const a = await client.sql`SELECT * FROM usuarios WHERE nombre =${nombre} AND passw=${passw};`;
+    const a = await client.sql`SELECT * FROM usuarios WHERE nombre = ${nombre} AND passw = ${passw};`;
     res.status(200).json({a});
 });
 
