@@ -50,9 +50,17 @@ app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
 
     const client = await db.connect();
     const a = await client.sql`SELECT existe_usuario(${req.params.nombre});`;
+
     const existe = a["rows"][0]["existe_usuario"]
-    res.status(200).send(existe);
     
+
+    if(existe == false){
+        client.sql`INSERT INTO usuarios (nombre, passw) VALUES (${req.params.nombre}, ${req.params.passw});`
+        res.status(200).send(true);
+    }
+    else{
+        res.status(200).send(false);
+    }
 });
 
 app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
