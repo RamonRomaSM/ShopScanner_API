@@ -4,18 +4,6 @@ import Express from 'express';
 import http from 'http';
 const express = require("express");
 const app = express();
-/*
-ahora ver lo de los dato de la tabla 
-(que las 2 tablas tengan las mismas filas pero seleccionando
-diferentes columnas), hacer el getSeleccionadas(que coja los valores diferenciales esos) 
-meterlos en el where de alguna forma (no se si en el hasMap o como hacerlo)
-*/
-
-//      createUser(nombre,passw,Email?)(a las malas sobrecargo con otro que no pida mail)
-//      logIn(nombre,passw)
-//      cuando guardas un carrito haces el createLista 
-//      podria hacer toda la gestion de listas ofline y al cerrar/cerrarsesion/salir guardar el estado del usuario(con la excusa del consumo de peticiones?)
-
 
 /*
     aparentemente se puede meter un json en el body de una peticion post
@@ -31,14 +19,6 @@ meterlos en el where de alguna forma (no se si en el hasMap o como hacerlo)
     deleteLista (nombre idUser)
 */
 
-/*
-CON EL FILTRO HECHO:
-
-SELECT * FROM productos WHERE 15> 1 AND LOWER(nombre) LIKE LOWER('%Cebolla%') LIMIT 15 ;
-
-ahora faltaria admitir un 2do parametro en la peticion que se llame 'hint' o algo asi 
-*/
-
 app.get("/", async function(req, res) {
   
     res.send("a");
@@ -48,7 +28,9 @@ app.get("/getPagina/:num/:hint", async function( req,res ) {
     let num = req.params.num * 15;
     let hint ='% ' + req.params.hint + ' %';
     const client = await db.connect();
-    //SELECT * FROM productos WHERE 15> 1 AND LOWER(nombre) LIKE LOWER('%${req.params.hint}%') LIMIT 15 ;
+    /*
+        de normal es '% hint %' , pero si me devulve un vacio, probar '%hint%'
+    */
     const a = await client.sql`SELECT * FROM productos WHERE num > ${num} AND LOWER(nombre) LIKE LOWER(${hint}) LIMIT 15;`;
    
     res.status(200).json({a});
