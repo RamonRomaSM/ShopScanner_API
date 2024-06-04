@@ -49,7 +49,7 @@ app.get("/getPagina/num/:num/hint/:hint", async function( req,res ) {
     let hint = req.params.hint;
     const client = await db.connect();
     //SELECT * FROM productos WHERE 15> 1 AND LOWER(nombre) LIKE LOWER('%${req.params.hint}%') LIMIT 15 ;
-    const a = await client.sql`SELECT * FROM productos WHERE num > ${num} AND LOWER(nombre) LIKE LOWER(% ebolla %) LIMIT 15;`;
+    const a = await client.sql`SELECT * FROM productos WHERE num > ${num} AND LOWER(nombre) LIKE LOWER('%${hint}%') LIMIT 15;`;
    
     res.status(200).json({a});
 });
