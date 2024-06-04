@@ -31,7 +31,13 @@ meterlos en el where de alguna forma (no se si en el hasMap o como hacerlo)
     deleteLista (nombre idUser)
 */
 
+/*
+CON EL FILTRO HECHO:
 
+SELECT * FROM productos WHERE 15> 1 AND LOWER(nombre) LIKE LOWER('%Cebolla%') LIMIT 15 ;
+
+ahora faltaria admitir un 2do parametro en la peticion que se llame 'hint' o algo asi 
+*/
 
 app.get("/", async function(req, res) {
   
