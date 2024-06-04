@@ -44,7 +44,7 @@ app.get("/", async function(req, res) {
     res.send("a");
 });
 
-app.get("/getPagina/num/:num/hint/:hint", async function( req,res ) {
+app.get("/getPagina/:num/:hint", async function( req,res ) {
     let num = req.params.num * 15;
     let hint ='%' + req.params.hint + '%';
     const client = await db.connect();
