@@ -29,7 +29,7 @@ app.get("/getPagina/:num/:hint", async function( req,res ) {
     let hint ='% ' + req.params.hint + ' %';
     const client = await db.connect();
     /*
-        de normal es '% hint %' , pero si me devulve un vacio, probar '%hint%'
+        de normal es '% hint %' , pero si me devulve un vacio, probar '%hint%' porque puede habreme pedido un substring (va a ser lento pero weno)
     */
     const a = await client.sql`SELECT * FROM productos WHERE num > ${num} AND LOWER(nombre) LIKE LOWER(${hint}) LIMIT 15;`;
    
