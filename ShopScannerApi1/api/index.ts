@@ -36,7 +36,7 @@ app.get("/getPagina/:num/:hint", async function( req,res ) {
     */
     const a = await client.sql`SELECT * FROM productos WHERE num > ${num} AND LOWER(nombre) LIKE LOWER(${hint}) LIMIT 15;`;
    
-    res.send(hint);
+    res.status(200).json({a});
 });
 
 app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
