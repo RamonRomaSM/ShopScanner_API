@@ -34,8 +34,8 @@ app.get("/getPagina/:num/:hint", async function( req,res ) {
     const client = await db.connect();
    
     const a = await client.sql`SELECT * FROM productos WHERE LOWER(nombre) LIKE LOWER(${hint}) LIMIT 15 OFFSET ${num};`;
-   
-    res.status(200).json({a});
+    const resp = a["rows"]
+    res.status(200).json({resp});
 });
 
 app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
