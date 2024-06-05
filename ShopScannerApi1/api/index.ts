@@ -34,7 +34,7 @@ app.get("/getPagina/:num/:hint", async function( req,res ) {
         de normal es '% hint %' , pero si me devulve un vacio, probar '%hint%' porque puede habreme pedido un substring (va a ser lento pero weno)
         (o podrian lanzarse 2 threads dede el cliente, 1 dando por hecho que es un string y otro dando por hecho que es un substring)
     */
-    const a = await client.sql`SELECT * FROM productos WHERE num > ${num} AND LOWER(nombre) LIKE LOWER(${hint}) LIMIT 15;`;
+    const a = await client.sql`SELECT * FROM productos WHERE LOWER(nombre) LIKE LOWER(${hint}) LIMIT 15 OFFSET ${num};`;
    
     res.status(200).json({a});
 });
