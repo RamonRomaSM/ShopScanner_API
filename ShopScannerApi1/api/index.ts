@@ -28,7 +28,6 @@ app.get("/getPagina/:num/:hint", async function( req,res ) {
     /* 
         a la hora de insertar datos en la bdd, meterle un ' ' antes del nombre a los productos,
         para que % foo % funcione bien
-
     */
     let num = req.params.num * 15;
     let hint;
