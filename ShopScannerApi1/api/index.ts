@@ -26,7 +26,9 @@ app.get("/", async function(req, res) {
 
 app.get("/getPagina/:num/:hint", async function( req,res ) {
     let num = req.params.num * 15;
-    let hint ='% ' + req.params.hint + ' %';
+    let hint;
+    if(req.params.hint == " "){hint ='%%';}
+    else{hint ='% ' + req.params.hint + ' %';}
     const client = await db.connect();
     /*
         de normal es '% hint %' , pero si me devulve un vacio, probar '%hint%' porque puede habreme pedido un substring (va a ser lento pero weno)
