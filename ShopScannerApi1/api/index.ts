@@ -20,15 +20,13 @@ const app = express();
 */
 
 app.get("/", async function(req, res) {
-  
     res.send("Respuesta por defecto");
 });
 
 app.get("/getPagina/:num/:hint", async function( req,res ) {
-    /* 
-        a la hora de insertar datos en la bdd, meterle un ' ' antes del nombre a los productos,
-        para que % foo % funcione bien
-    */
+/*
+    % foo % ya deberia funcionar, falta agregar %foo%
+*/ 
     let num = req.params.num * 15;
     let hint;
     if(req.params.hint == "Escribe lo que quieras buscar"){hint ='%';}
