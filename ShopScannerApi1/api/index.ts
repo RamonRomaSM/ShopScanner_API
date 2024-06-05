@@ -21,19 +21,21 @@ const app = express();
 
 app.get("/", async function(req, res) {
   
-    res.send("a");
+    res.send("Respuesta por defecto");
 });
 
 app.get("/getPagina/:num/:hint", async function( req,res ) {
+    /* 
+        a la hora de insertar datos en la bdd, meterle un ' ' antes del nombre a los productos,
+        para que % foo % funcione bien
+
+    */
     let num = req.params.num * 15;
     let hint;
     if(req.params.hint == "Escribe lo que quieras buscar"){hint ='%';}
     else{hint ='% ' + req.params.hint + ' %';}
     const client = await db.connect();
-    /*
-        de normal es '% hint %' , pero si me devulve un vacio, probar '%hint%' porque puede habreme pedido un substring (va a ser lento pero weno)
-        (o podrian lanzarse 2 threads dede el cliente, 1 dando por hecho que es un string y otro dando por hecho que es un substring)
-    */
+   
     const a = await client.sql`SELECT * FROM productos WHERE LOWER(nombre) LIKE LOWER(${hint}) LIMIT 15 OFFSET ${num};`;
    
     res.status(200).json({a});
