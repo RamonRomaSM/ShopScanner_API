@@ -27,13 +27,13 @@ app.get("/getPagina/:num/:hint", async function( req,res ) {
 /*
     % foo % ya deberia funcionar, falta agregar %foo%
 */ 
-    let num = req.params.num * 15;
+    let num = req.params.num * 30;
     let hint;
     if(req.params.hint == "Escribe lo que quieras buscar"){hint ='%';}
     else{hint ='% ' + req.params.hint + ' %';}
     const client = await db.connect();
    
-    const a = await client.sql`SELECT * FROM productos WHERE LOWER(nombre) LIKE LOWER(${hint}) LIMIT 15 OFFSET ${num};`;
+    const a = await client.sql`SELECT * FROM productos WHERE LOWER(nombre) LIKE LOWER(${hint}) LIMIT 30 OFFSET ${num};`;
     const resp = a["rows"];//para deshacerse de lo innnecesario
     res.status(200).json({resp});
 });
