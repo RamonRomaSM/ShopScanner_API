@@ -49,7 +49,11 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
         //si me logeo con uno que no exsiste, mandar  false
         const resp = exists["rows"][0];
         
-        const listas = await kv.get('listas_compra:usuario:'+resp["idusuario"]);
+        var listas = await kv.get('listas_compra:usuario:'+resp["idusuario"]);
+        if(listas == "null"){
+            kv.set("usuario",resp["idusuario"])
+        }
+        listas = await kv.get('listas_compra:usuario:'+resp["idusuario"]);
         res.status(200).json({resp , listas});
     }
     catch{
