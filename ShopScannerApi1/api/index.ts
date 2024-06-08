@@ -49,7 +49,7 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
         //si me logeo con uno que no exsiste, mandar  false
         const resp = exists["rows"][0];
         const listas = await kv.get('listas_compra:usuario:'+resp["idusuario"]);
-        res.send(resp +"+"+ listas);
+        res.send.json({resp , listas});
     }
     catch{
         res.status(200).send("resp:"+false);
