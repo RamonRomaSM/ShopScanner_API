@@ -47,7 +47,7 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
    //tengo que darte tu usuario + listas
     const resp = exists["rows"][0];
 
-    const listas = await kv.hgetall('usuario:'+exists["idUsuario"]);
+    const listas = await kv.hgetall('usuario:4');
     res.status(200).json({listas});
 });
 
