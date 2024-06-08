@@ -45,7 +45,10 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     const client = await db.connect();
     const exists = await client.sql`SELECT * FROM usuarios WHERE nombre = ${req.params.nombre} AND passw = ${req.params.passw};`;
    //tengo que darte tu usuario + listas
-    res.status(200).json({exists});
+    const resp = exists["rows"][0];
+
+    const listas = await kv.hgetall('usuario:'+exists["idUsuario"]);
+    res.status(200).json({listas});
 });
 
 
