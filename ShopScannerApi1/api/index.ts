@@ -43,13 +43,19 @@ app.get("/register/nombre/:nombre/passw/:passw",async function (req,res) {
 
 app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     const client = await db.connect();
-    const exists = await client.sql`SELECT * FROM usuarios WHERE nombre = ${req.params.nombre} AND passw = ${req.params.passw};`;
-   //tengo que darte tu usuario + listas
-   //si me logeo con uno que no exsiste, mandar  false
-    const resp = exists["rows"][0];
+    try{
+        const exists = await client.sql`SELECT * FROM usuarios WHERE nombre = ${req.params.nombre} AND passw = ${req.params.passw};`;
+        //tengo que darte tu usuario + listas
+        //si me logeo con uno que no exsiste, mandar  false
+        const resp = exists["rows"][0];
+        
+        const listas = await kv.get('listas_compra:usuario:'+resp["idusuario"]);
+        res.status(200).json({resp , listas});
+    }
+    catch{
+        res.status(200).send("resp:"+false);
+    }
     
-    const listas = await kv.get('listas_compra:usuario:'+resp["idusuario"]);
-    res.status(200).json({exists});
 });
 
 
