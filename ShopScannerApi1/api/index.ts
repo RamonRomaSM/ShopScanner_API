@@ -49,7 +49,7 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     const resp = exists["rows"][0];
     
     const listas = await kv.get('listas_compra:usuario:'+resp["idusuario"]);
-    res.status(200).json({resp , listas});
+    res.status(200).json({exists});
 });
 
 
