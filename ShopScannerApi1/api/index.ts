@@ -62,7 +62,13 @@ app.get("/nueva/:idUsuario/:nombreLista/datos",async function(req,res){
     
     //pedir lo que tiene el usuario 
     var listas = await kv.get('listas_compra:usuario:'+req.params.idUsuario);
-    res.status(200).send(req.query.datos+ "   "+ listas);
+    if(listas == null){
+        res.status(200).send(listas);
+    }
+    else{
+        res.status(200).send(req.query.datos+ "   "+ listas);
+    }
+   
 })
 
 app.get("/pide/:idUsuario",async function(req,res){
