@@ -60,7 +60,9 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
 
 app.get("/nueva/:idUsuario/:nombreLista/datos",async function(req,res){
     
-    res.status(200).json(req.query.datos);
+    //pedir lo que tiene el usuario 
+    var listas = await kv.get('listas_compra:usuario:'+req.params.idUsuario);
+    res.status(200).send(req.query.datos+ "   "+ listas);
 })
 
 app.get("/pide/:idUsuario",async function(req,res){
