@@ -72,14 +72,11 @@ app.get("/nueva/:idUsuario/datos",async function(req,res){
     res.status(200).Json("resp",true);
 })
 
-app.get("/pide/:idUsuario",async function(req,res){
-
-
+app.get("/elimina/:idUsuario",async function(req,res){
+    kv.del("listas_compra:usuario:"+req.params.idUsuario);
+    res.status(200).Json("resp",true);
 })
-app.get("/sobreescribe/:idUsuario/:nombre",async function(req,res){
 
-
-})
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
