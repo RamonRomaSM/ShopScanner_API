@@ -64,14 +64,13 @@ app.get("/nueva/:idUsuario/:nombreLista/datos",async function(req,res){
     var listas = await kv.get('listas_compra:usuario:'+req.params.idUsuario);
     if(listas == null){
         kv.set("listas_compra:usuario:"+req.params.idUsuario,"[{"+req.query.datos+"}]");
+        res.status(200).send(req.query.datos+"   "+ listas);
     }
     else{
         //kv.set("listas_compra:usuario:"+req.params.idUsuario,"[{"+req.query.datos+"}]");
-        var a=""+listas;
-        a=a.split("]}]")[0]+",{"+req.query.datos+"}]}]"
-
+        res.status(200).send(listas["productos"]);
     }
-    res.status(200).send(req.query.datos+"   "+ listas);
+    
 })
 
 app.get("/pide/:idUsuario",async function(req,res){
