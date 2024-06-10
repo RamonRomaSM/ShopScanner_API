@@ -67,6 +67,9 @@ app.get("/nueva/:idUsuario/:nombreLista/datos",async function(req,res){
     }
     else{
         //kv.set("listas_compra:usuario:"+req.params.idUsuario,"[{"+req.query.datos+"}]");
+        var a=""+listas;
+        a=a.split("]}]")[0]+",{"+req.query.datos+"}]}]"
+
     }
     res.status(200).send(req.query.datos+"   "+ listas);
 })
