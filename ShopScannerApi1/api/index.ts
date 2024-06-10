@@ -58,7 +58,7 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     
 });
 
-app.get("/nueva/:idUsuario/:nombreLista/:datos",async function(req,res){
+app.get("/nueva/:idUsuario/:nombreLista/datos",async function(req,res){
     res.status(200).json(req.params.datos);
 })
 
