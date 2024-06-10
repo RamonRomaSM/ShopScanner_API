@@ -63,12 +63,12 @@ app.get("/nueva/:idUsuario/:nombreLista/datos",async function(req,res){
     //pedir lo que tiene el usuario 
     var listas = await kv.get('listas_compra:usuario:'+req.params.idUsuario);
     if(listas == null){
-        res.status(200).send(listas+"nope");
+        kv.set("listas_compra:usuario:"+req.params.idUsuario,"[{"+req.query.datos+"}]");
     }
     else{
-        res.status(200).send(req.query.datos+"   "+ listas);
+        //kv.set("listas_compra:usuario:"+req.params.idUsuario,"[{"+req.query.datos+"}]");
     }
-   
+    res.status(200).send(req.query.datos+"   "+ listas);
 })
 
 app.get("/pide/:idUsuario",async function(req,res){
