@@ -2,6 +2,7 @@ import { db } from '@vercel/postgres';
 import { kv } from '@vercel/kv';
 import Express from 'express';
 import http from 'http';
+import { inflate } from 'zlib';
 const express = require("express");
 const app = express();
 
@@ -57,8 +58,18 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     
 });
 
+app.post("/nueva/:idUsuario/:nombreLista",async function(req,res){
+    res.send(req.body);
+    
+})
+app.get("/pide/:idUsuario",async function(req,res){
 
 
+})
+app.get("/sobreescribe/:idUsuario/:nombre",async function(req,res){
+
+
+})
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
