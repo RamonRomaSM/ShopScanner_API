@@ -59,18 +59,9 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
 });
 
 app.get("/nueva/:idUsuario/:nombreLista/datos",async function(req,res){
-    
     //pedir lo que tiene el usuario 
-    var listas = await kv.get('listas_compra:usuario:'+req.params.idUsuario);
-    if(listas == null){
-        kv.set("listas_compra:usuario:"+req.params.idUsuario,"[{"+req.query.datos+"}]");
-        res.status(200).send(req.query.datos+"   "+ listas);
-    }
-    else{
-        //kv.set("listas_compra:usuario:"+req.params.idUsuario,"[{"+req.query.datos+"}]");
-        res.status(200).send(listas["productos"]);
-    }
-    
+    kv.set("listas_compra:usuario:"+req.params.idUsuario,req.query.datos);
+    res.status(200).send(true);
 })
 
 app.get("/pide/:idUsuario",async function(req,res){
