@@ -62,13 +62,10 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
 
 app.get("/nueva/:idUsuario/datos",async function(req,res){
     //pedir lo que tiene el usuario 
-    if(req.query.datos == "elimina"){
-        kv.del("listas_compra:usuario:"+req.params.idUsuario);
-    }
-    else{
+   
         kv.del("listas_compra:usuario:"+req.params.idUsuario);
         kv.set("listas_compra:usuario:"+req.params.idUsuario,req.query.datos);
-    }
+    
     res.status(200).Json("resp",true);
 })
 
