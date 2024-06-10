@@ -66,7 +66,7 @@ app.get("/nueva/:idUsuario/:nombreLista/datos",async function(req,res){
         res.status(200).send(listas);
     }
     else{
-        res.status(200).send(req.query.datos+ "   "+ listas);
+        res.status(200).send(req.query.datos+"   "+ listas);
     }
    
 })
