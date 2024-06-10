@@ -59,7 +59,7 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
 });
 
 app.get("/nueva/:idUsuario/:nombreLista/:datos",async function(req,res){
-    res.send(req.params.datos);
+    res.send(req.body);
 })
 
 app.get("/pide/:idUsuario",async function(req,res){
