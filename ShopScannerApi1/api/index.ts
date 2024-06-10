@@ -58,14 +58,10 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
     
 });
 
-app.post("/nueva/:idUsuario/:nombreLista",async function(req,res){
-    res.json({requestBody: req.body})
+app.get("/nueva/:idUsuario/:nombreLista/:datos",async function(req,res){
+    res.send(req.params.datos);
 })
-app.post('/test', (req, res) => {
-    res.json({requestBody: req.body})  // <==== req.body will be a parsed JSON object
-  })
 
-  
 app.get("/pide/:idUsuario",async function(req,res){
 
 
