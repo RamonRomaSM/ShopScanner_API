@@ -59,8 +59,8 @@ app.get("/login/nombre/:nombre/passw/:passw",async function(req,res) {
 });
 
 app.get("/nueva/:idUsuario/:nombreLista/datos",async function(req,res){
-
-    res.status(200).json(req.query.datos);
+    const a=JSON.parse(req.query.datos);
+    res.status(200).json(a);
 })
 
 app.get("/pide/:idUsuario",async function(req,res){
